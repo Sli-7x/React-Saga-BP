@@ -1,4 +1,4 @@
-# Typescript SSR React boilerplate
+# Typescript SSR React + redux-saga boilerplate
 
 ### How to start
 
