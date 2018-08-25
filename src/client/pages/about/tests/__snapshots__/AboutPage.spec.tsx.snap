@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AboutPage.tsx should cover onClick() 1`] = `
+<div>
+  ABOUT US
+  <button
+    className="sc-bdVaJa cqFNto"
+    onClick={[Function]}
+  >
+    Click me
+  </button>
+</div>
+`;
+
+exports[`AboutPage.tsx should render correctly 1`] = `
+<div>
+  ABOUT US
+  <button
+    className="sc-bdVaJa cqFNto"
+    onClick={[Function]}
+  >
+    Click me
+  </button>
+</div>
+`;
