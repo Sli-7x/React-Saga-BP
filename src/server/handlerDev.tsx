@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router-dom';
 import { ServerStyleSheet, StyleSheetManager } from 'styled-components';
 import App from '../client/App';
-import { store } from '../client/core/configureStore';
+import configureStore from '../client/core/configureStore';
 import template from './template';
 
 const router = express.Router();
@@ -14,6 +14,7 @@ const router = express.Router();
 router.get('*', async (req: express.Request, res: express.Response) => {
   const context: any = {};
   const sheet: any = new ServerStyleSheet();
+  const store = configureStore();
 
   const appHtml = ReactDom.renderToString(
     <Provider store={store}>

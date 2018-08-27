@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { ErrorBoundary } from '../../components/errors/ErrorBoundary';
 import { Filters } from '../../components/filters/Filters';
 import { loadFilters } from '../../store/filters/actions';
+import { errorToast } from '../../components/ui/toast/Toast.action';
 
 interface IHomePageProps {
   filters: any;
@@ -20,10 +21,11 @@ export class HomePage extends React.Component<IHomePageProps, IHomePageState> {
   }
 
   componentDidMount() {
-    this.getList();
+    this.props.dispatch(loadFilters({ id: '5555' }));
   }
 
   getList() {
+    this.props.dispatch(errorToast('ERRORRRORROROROR'));
     this.props.dispatch(loadFilters({ id: '5555' }));
   }
 
@@ -42,6 +44,7 @@ export class HomePage extends React.Component<IHomePageProps, IHomePageState> {
 
 export const mapStateToProps = (state: any) => ({
   filters: state.filters,
+  toast: state.toast,
 });
 
 export default connect(mapStateToProps)(HomePage);

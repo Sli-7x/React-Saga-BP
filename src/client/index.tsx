@@ -3,8 +3,8 @@ import { hydrate } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import * as Loadable from 'react-loadable';
-import store from './core/configureStore';
 import App from './App';
+import configureStore from './core/configureStore';
 
 declare global {
   interface IWindow {
@@ -13,10 +13,9 @@ declare global {
   }
 }
 
-window.__INITIAL_STATE__ = window.__INITIAL_STATE__;
-// const initaliState = window.__INITIAL_STATE__;
+const initaliState = window.__INITIAL_STATE__;
+const store = configureStore(initaliState);
 delete window.__INITIAL_STATE__;
-// const store = configureStore(initaliState);
 
 const renderApp = (Comp?: any) => {
   return hydrate(

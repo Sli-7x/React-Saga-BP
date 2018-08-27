@@ -6,6 +6,7 @@ import { Route, Switch } from 'react-router-dom';
 import routes from './routes';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './core/theme';
+import ErrorToast from './components/ui/toast/Toast';
 // import Error404 from './components/Errors/Error404'
 // import RedirectWithStatus from './components/Errors/RedirectWithStatus'
 /*
@@ -16,26 +17,29 @@ import { theme } from './core/theme';
 />
 */
 
-export default class App extends React.Component {
+export default class App extends React.Component<any, any> {
   render() {
     return (
-      <ThemeProvider theme={theme}>
-        <div id="wrapper">
-          <Header />
-          <Helmet>
-            <title>Typescript react ssr</title>
-            <meta name="description" content="react typescript ssr with code split" />
-          </Helmet>
-          <main className="content">
-            <Switch>
-              {routes.map((val: any, i) => (
-                <Route {...val} key={i} />
-              ))}
-            </Switch>
-          </main>
-          <Footer />
-        </div>
-      </ThemeProvider>
+      <>
+        <ErrorToast {...this.props} />
+        <ThemeProvider theme={theme}>
+          <div id="wrapper">
+            <Header />
+            <Helmet>
+              <title>Typescript react ssr</title>
+              <meta name="description" content="react typescript ssr with code split" />
+            </Helmet>
+            <main className="content">
+              <Switch>
+                {routes.map((val: any, i) => (
+                  <Route {...val} key={i} />
+                ))}
+              </Switch>
+            </main>
+            <Footer />
+          </div>
+        </ThemeProvider>
+      </>
     );
   }
 }
